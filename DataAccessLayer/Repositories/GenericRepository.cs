@@ -17,7 +17,7 @@ namespace DataAccessLayer.Repositories
             context.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public List<T> GetList()
         {
             using var context = new Context();
 
