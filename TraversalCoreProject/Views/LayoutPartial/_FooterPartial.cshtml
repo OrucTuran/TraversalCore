@@ -7,54 +7,53 @@
                     <div class="col-lg-6 column">
                         <div class="row">
                             <div class="col-md-4 column">
-                                <h3>Company</h3>
+                                <h3>Şirket</h3>
                                 <ul class="footer-gd-16">
-                                    <li><a href="~/Traversal-Starter/index.html">Home</a></li>
-                                    <li><a href="~/Traversal-Starter/about.html">About Us</a></li>
-                                    <li><a href="~/Traversal-Starter/services.html">Services</a></li>
+                                    <li><a href="~/Traversal-Starter/index.html">Ana Sayfa</a></li>
+                                    <li><a href="~/Traversal-Starter/about.html">Hakkımızda</a></li>
+                                    <li><a href="~/Traversal-Starter/services.html">Hizmetler</a></li>
                                     <li><a href="~/Traversal-Starter/blog.html">Blog</a></li>
-                                    <li><a href="~/Traversal-Starter/contact.html">Contact Us</a></li>
+                                    <li><a href="~/Traversal-Starter/contact.html">İletişim</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-4 column mt-md-0 mt-4">
-                                <h3>Useful Links</h3>
+                                <h3>Faydalı Linkler</h3>
                                 <ul class="footer-gd-16">
-                                    <li><a href="#url">Destinations</a></li>
-                                    <li><a href="#url">Our Branches</a></li>
-                                    <li><a href="#url">Latest Media</a></li>
-                                    <li><a href="about.html">About Company</a></li>
-                                    <li><a href="#url">Our Packages</a></li>
+                                    <li><a href="#url">Rotalar</a></li>
+                                    <li><a href="#url">Şubelerimiz</a></li>
+                                    <li><a href="#url">Son Medya</a></li>
+                                    <li><a href="about.html">Şirket Hakkında</a></li>
+                                    <li><a href="#url">Paketlerimiz</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-4 column mt-md-0 mt-4">
-                                <h3>Our Services</h3>
+                                <h3>Hizmetlerimiz</h3>
                                 <ul class="footer-gd-16">
-                                    <li><a href="#url">Privacy Policy</a></li>
-                                    <li><a href="#url">Our Terms</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="landing-single.html">Landing Page</a></li>
-                                    <li><a href="#url">Our Guides</a></li>
+                                    <li><a href="#url">Gizlilik Politikası</a></li>
+                                    <li><a href="#url">Şartlarımız</a></li>
+                                    <li><a href="services.html">Hizmetler</a></li>
+                                    <li><a href="landing-single.html">Tanıtım Sayfası</a></li>
+                                    <li><a href="#url">Rehberlerimiz</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
-                        <h3>Newsletter </h3>
+                        <h3>Bülten</h3>
                         <div class="end-column">
-                            <h4>Get latest updates and offers.</h4>
+                            <h4>En son güncellemeleri ve fırsatları alın.</h4>
                             <form action="#" class="subscribe" method="post">
-                                <input type="email" name="email" placeholder="Email Address" required="">
-                                <button type="submit">Go</button>
+                                <input type="email" name="email" placeholder="E-posta Adresi" required="">
+                                <button type="submit">Abone Ol</button>
                             </form>
-                            <p>Sign up for our latest news & articles. We won’t give you spam mails.</p>
+                            <p>En yeni haberler ve makaleler için kaydolun. Spam mail göndermiyoruz.</p>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
                     <div class="columns text-lg-left text-center">
                         <p>
-                            &copy; 2020 Traversal. All rights reserved.Design by <a href="https://w3layouts.com/" target="_blank">
-                                W3Layouts
+                            &copy; @DateTime.Now.Year Traversal. Tüm hakları saklıdır.
                             </a>
                         </p>
                     </div>
@@ -81,36 +80,34 @@
             </div>
         </div>
 
-        <!-- move top -->
-        <button onclick="topFunction()" id="movetop" title="Go to top">
+        <!-- yukarı çık -->
+        <button onclick="topFunction()" id="movetop" title="Yukarı çık">
             <span class="fa fa-angle-up"></span>
         </button>
         <script>
-            // When the user scrolls down 20px from the top of the document, show the button
             window.onscroll = function () {
-              scrollFunction()
+                scrollFunction()
             };
 
             function scrollFunction() {
-              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-              } else {
-                document.getElementById("movetop").style.display = "none";
-              }
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
             }
 
-            // When the user clicks on the button, scroll to the top of the document
             function topFunction() {
-              document.body.scrollTop = 0;
-              document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             }
         </script>
-        <!-- //move top -->
+        <!-- //yukarı çık -->
         <script>
             $(function () {
-              $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-              })
+                $('.navbar-toggler').click(function () {
+                    $('body').toggleClass('noscroll');
+                })
             });
         </script>
     </section>
