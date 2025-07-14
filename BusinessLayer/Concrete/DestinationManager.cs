@@ -18,9 +18,9 @@ namespace BusinessLayer.Concrete
             _destinationDal = destinationDal;
         }
 
-        public Destination GeyByID(int id)
+        public Destination TGeyByID(int id)
         {
-            throw new NotImplementedException();
+            return _destinationDal.GetByID(id);
         }
 
         public void TAdd(Destination t)

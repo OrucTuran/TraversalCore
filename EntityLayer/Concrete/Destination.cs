@@ -18,5 +18,9 @@ namespace EntityLayer.Concrete
         public string Description { get; set; }
         public int Capacity { get; set; }
         public bool Status { get; set; }
+        public string BlogCoverImage { get; set; }
+        public string BlogDescriptionA { get; set; }
+        public string BlogDescriptionB { get; set; }
+        public string BlogMiniImage { get; set; }
     }
 }

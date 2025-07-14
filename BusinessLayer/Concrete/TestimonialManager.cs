@@ -18,7 +18,7 @@ namespace BusinessLayer.Concrete
             _testimonialDal = testimonialDal;
         }
 
-        public Testimonial GeyByID(int id)
+        public Testimonial TGeyByID(int id)
         {
             throw new NotImplementedException();
         }

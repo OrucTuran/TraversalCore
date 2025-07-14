@@ -17,7 +17,8 @@ namespace TraversalCoreProject.Controllers
         [HttpGet]
         public IActionResult DestinationDetails(int id)//istenilen id ye gore detaylar
         {
-            return View();
+            var values = destinationManager.TGeyByID(id);
+            return View(values);
         }
         [HttpPost]
         public IActionResult DestinationDetails(Destination destination)
