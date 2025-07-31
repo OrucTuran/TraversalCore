@@ -22,5 +22,6 @@ namespace EntityLayer.Concrete
         public string BlogDescriptionA { get; set; }
         public string BlogDescriptionB { get; set; }
         public string BlogMiniImage { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
