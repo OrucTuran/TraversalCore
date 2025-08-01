@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfAboutDal : GenericRepository<About>, IAboutDal//IAboutDal entity e ozgu metot tanimlanabilecegi ihtimali icin burada
+    public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
-
     }
 }
