@@ -1,6 +1,10 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +27,17 @@ namespace TraversalCoreProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();// burada amac identity yapilandirmasini tanimlamak hemde proje seviyesinde bir authentication uygulamak
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();//identity yapilandirmasi eklendi
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+            }); //kullanýcý authorize olmak icin mutlaka giris yapsin
+            services.AddMvc();
             services.AddControllersWithViews();
         }
 
@@ -41,7 +56,7 @@ namespace TraversalCoreProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
