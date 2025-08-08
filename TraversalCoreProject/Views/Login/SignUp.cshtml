@@ -1,75 +1,97 @@
-﻿@{
+﻿@model TraversalCoreProject.Models.UserRegisterViewModel
+
+@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="tr">
+
 <head>
-    <meta charset="utf-8">
-    <title>Traversal Kullanıcı Kayıt Ekranı</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- LINEARICONS -->
-    <link rel="stylesheet" href="~/Traversal_Login_Register-main/Register/fonts/linearicons/style.css">
-
-    <!-- STYLE CSS -->
-    <link rel="stylesheet" href="~/Traversal_Login_Register-main/Register/css/style.css">
+    <title>Kayıt Ol | TraversalCoreProject</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="~/web/css/style.css" type="text/css" media="all" />
 </head>
 
 <body>
+    <section class="w3l-login-6">
+        <div class="login-hny">
+            <div class="form-content">
+                <div class="form-right">
+                    <div class="overlay">
+                        <div class="grid-info-form">
+                            <h5>Merhaba</h5>
+                            <h3>HESAP OLUŞTUR</h3>
+                            <p>
+                                Sitemize kayıt olarak hizmetlerimizden yararlanmaya başlayabilirsiniz.
+                                Lütfen aşağıdaki formu doldurun.
+                            </p>
+                            <a href="index.html" class="read-more-1 btn">Başla</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-left">
+                    <div class="middle">
+                        <h4>Bize Katılın</h4>
+                        <p>Hesabınızı oluşturun, tamamen ücretsiz!</p>
+                    </div>
+                    <form method="post" class="signin-form">
+                        <div class="form-input">
+                            <label>Ad</label>
+                            <input type="text" asp-for="Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>Soyad</label>
+                            <input type="text" asp-for="Surname" />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>Kullanıcı Adı</label>
+                            <input type="text" asp-for="Username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>E-posta</label>
+                            <input type="email" asp-for="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>Telefon Numarası</label>
+                            <input type="text" asp-for="PhoneNumber" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>Şifre</label>
+                            <input type="password" asp-for="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-input">
+                            <label>Şifre Tekrar</label>
+                            <input type="password" asp-for="ConfrimPassword" />
+                            <span asp-validation-for="ConfrimPassword" class="text-danger"></span>
+                        </div>
 
-    <div class="wrapper">
-        <div class="inner">
-            <img src="~/Traversal_Login_Register-main/Register/images/image-1.png" alt="" class="image-1">
-            <form method="post">
-                <h3>YENİ HESAP?</h3>
-                <div class="form-holder">
-                    <span class="lnr lnr-user"></span>
-                    <input type="text" class="form-control" placeholder="Adınız"name="Name">
+                        <label class="container">
+                            <a href="#">Kullanım Şartları</a> ve <a href="#">Gizlilik Politikası</a>nı kabul ediyorum
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <button type="submit" class="btn">Hesap Oluştur</button>
+                    </form>
+                    <div class="copy-right text-center">
+                        <p>
+                            © @DateTime.Now.Year Tüm hakları saklıdır | Tasarım:
+                            <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                        </p>
+                    </div>
                 </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-user"></span>
-                    <input type="text" class="form-control" placeholder="Soyadınız"name="Surname">
-                </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-user"></span>
-                    <input type="text" class="form-control" placeholder="Kullanıcı Adınız" name="Username">
-                </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-envelope"></span>
-                    <input type="text" class="form-control" placeholder="Mail Adresiniz"name="Email">
-                </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-phone-handset"></span>
-                    <input type="text" class="form-control" placeholder="Telefon Numaranız" name="PhoneNumber">
-                </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-lock"></span>
-                    <input type="password" class="form-control" placeholder="Şifreniz"name="Password">
-                </div>
-                <div class="form-holder">
-                    <span class="lnr lnr-lock"></span>
-                    <input type="password" class="form-control" placeholder="Şifrenizi Oanylayın" name="ConfrimPassword">
-                </div>
-                <button>
-                    <span>Kayıt Ol</span>
-                </button>
-                <br />
-                <div class="text-center">
-                    <span class="txt1">
-                        Hesabınız Var mı?
-                    </span>
-                    <a class="txt2" href="/Login/SignIn/">
-                        Giriş Yapın
-                    </a>
-                </div>
-            </form>
-            <img src="~/Traversal_Login_Register-main/Register/images/image-2.png" alt="" class="image-2">
+            </div>
         </div>
-
-    </div>
-
-    <script src="~/Traversal_Login_Register-main/Register/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Traversal_Login_Register-main/Register/js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    </section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
 </html>

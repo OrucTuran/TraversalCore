@@ -16,7 +16,7 @@ namespace TraversalCoreProject.Models
         [Required(ErrorMessage = "Lütfen Email Adresinizi Giriniz.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Telefon numarası zorunludur.")]
+        [Required(ErrorMessage = "Telefon numarası girmek zorunludur.")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Lütfen Şifrenizi Giriniz.")]
