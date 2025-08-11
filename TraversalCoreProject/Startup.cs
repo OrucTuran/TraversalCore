@@ -3,15 +3,16 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TraversalCoreProject.Models; // CustomIdentityValidator için eklendi
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace TraversalCoreProject
 {
@@ -27,8 +28,21 @@ namespace TraversalCoreProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>();// burada amac identity yapilandirmasini tanimlamak hemde proje seviyesinde bir authentication uygulamak
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();//identity yapilandirmasi eklendi
+            services.AddDbContext<Context>(); // burada amac identity yapilandirmasini tanimlamak hemde proje seviyesinde bir authentication uygulamak
+
+            // identity yapilandirmasi eklendi
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequiredLength = 6; // Minimum karakter sayýsý
+                options.Password.RequireNonAlphanumeric = true; // Özel karakter zorunlu
+                options.Password.RequireDigit = true; // Rakam zorunlu
+                options.Password.RequireLowercase = true; // Küçük harf zorunlu
+                options.Password.RequireUppercase = true; // Büyük harf zorunlu
+            })
+            .AddEntityFrameworkStores<Context>()
+            .AddErrorDescriber<CustomIdentityValidator>() // Türkçe hata mesajlarý
+            .AddDefaultTokenProviders();
+
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -36,7 +50,8 @@ namespace TraversalCoreProject
                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
 
-            }); //kullanýcý authorize olmak icin mutlaka giris yapsin
+            }); // kullanýcý authorize olmak icin mutlaka giris yapsin
+
             services.AddMvc();
             services.AddControllersWithViews();
         }
@@ -56,10 +71,11 @@ namespace TraversalCoreProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
+
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); // Kimlik doðrulama
+            app.UseAuthorization();  // Yetkilendirme
 
             app.UseEndpoints(endpoints =>
             {

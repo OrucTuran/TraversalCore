@@ -27,7 +27,6 @@
                                 Sitemize kayıt olarak hizmetlerimizden yararlanmaya başlayabilirsiniz.
                                 Lütfen aşağıdaki formu doldurun.
                             </p>
-                            <a href="index.html" class="read-more-1 btn">Başla</a>
                         </div>
                     </div>
                 </div>
@@ -37,42 +36,48 @@
                         <p>Hesabınızı oluşturun, tamamen ücretsiz!</p>
                     </div>
                     <form method="post" class="signin-form">
-                        <div class="form-input">
-                            <label>Ad</label>
-                            <input type="text" asp-for="Name" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                        <div class="form-grid">
+                            <div class="form-input">
+                                <label>Ad</label>
+                                <input type="text" asp-for="Name" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-input">
+                                <label>Soyad</label>
+                                <input type="text" asp-for="Surname" />
+                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            </div>
+                            <div class="form-input">
+                                <label>Kullanıcı Adı</label>
+                                <input type="text" asp-for="Username" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="form-input">
+                                <label>Telefon Numarası</label>
+                                <input type="text" asp-for="PhoneNumber" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-input">
+                                <label>Şifre</label>
+                                <input type="password" asp-for="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-input">
+                                <label>Şifre Tekrar</label>
+                                <input type="password" asp-for="ConfrimPassword" />
+                                <span asp-validation-for="ConfrimPassword" class="text-danger"></span>
+                            </div>
                         </div>
-                        <div class="form-input">
-                            <label>Soyad</label>
-                            <input type="text" asp-for="Surname" />
-                            <span asp-validation-for="Surname" class="text-danger"></span>
-                        </div>
-                        <div class="form-input">
-                            <label>Kullanıcı Adı</label>
-                            <input type="text" asp-for="Username" />
-                            <span asp-validation-for="Username" class="text-danger"></span>
-                        </div>
+
+                        <!-- Email alanı -->
                         <div class="form-input">
                             <label>E-posta</label>
                             <input type="email" asp-for="Email" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        <div class="form-input">
-                            <label>Telefon Numarası</label>
-                            <input type="text" asp-for="PhoneNumber" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        <div class="form-input">
-                            <label>Şifre</label>
-                            <input type="password" asp-for="Password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-input">
-                            <label>Şifre Tekrar</label>
-                            <input type="password" asp-for="ConfrimPassword" />
-                            <span asp-validation-for="ConfrimPassword" class="text-danger"></span>
-                        </div>
 
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <br />
                         <label class="container">
                             <a href="#">Kullanım Şartları</a> ve <a href="#">Gizlilik Politikası</a>nı kabul ediyorum
                             <input type="checkbox">
@@ -80,6 +85,7 @@
                         </label>
                         <button type="submit" class="btn">Hesap Oluştur</button>
                     </form>
+
                     <div class="copy-right text-center">
                         <p>
                             © @DateTime.Now.Year Tüm hakları saklıdır | Tasarım:
@@ -93,5 +99,25 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-input {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-input input {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+    </style>
+
 </body>
 </html>
