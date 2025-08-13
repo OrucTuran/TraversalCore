@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace TraversalCoreProject.Areas.Member.Models
 {
@@ -28,5 +29,7 @@ namespace TraversalCoreProject.Areas.Member.Models
 
         [Display(Name = "Profil Resmi URL")]
         public string ImageURL { get; set; }
+        [Display(Name = "Profil Resmi")]
+        public IFormFile Image { get; set; }
     }
 }

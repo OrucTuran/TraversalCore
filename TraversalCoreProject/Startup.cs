@@ -91,6 +91,7 @@ namespace TraversalCoreProject
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
             });
+            app.UseStaticFiles();
         }
     }
 }
