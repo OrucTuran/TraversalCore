@@ -25,7 +25,7 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         public async Task<IActionResult> MyReservations()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
+            
             // Doğru: Include'lu rezervasyon listesini alacak bir servis metodu kullanılmalı
             var reservations = _reservationService.TGetListWithDestination()
                                     .Where(r => r.AppUserID == user.Id && r.ReservationDate >= DateTime.Now)
@@ -68,7 +68,6 @@ namespace TraversalCoreProject.Areas.Member.Controllers
                 _reservationService.TAdd(reservation);
 
                 TempData["ReservationMessage"] = "Rezervasyonunuz şu anda onay bekliyor. Rezervasyonlarınızın durumunu görmek için 'Rezervasyonlarım' sayfasına gidebilirsiniz.";
-                return RedirectToAction("MyReservations");
             }
 
             // Hata durumunda dropdown tekrar doldur
