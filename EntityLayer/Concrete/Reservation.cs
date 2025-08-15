@@ -22,7 +22,10 @@ namespace EntityLayer.Concrete
         Confirmed = 3,         // Rezervasyon onaylandı
 
         [Display(Name = "İptal Edildi")]
-        Cancelled = 4          // Rezervasyon iptal edildi
+        Cancelled = 4,          // Rezervasyon iptal edildi
+
+        [Display(Name = "Geçmiş Rezervasyon")]
+        Past = 5
     }
 
     public class Reservation

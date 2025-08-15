@@ -1,0 +1,50 @@
+﻿@model EntityLayer.Concrete.Reservation
+
+@{
+    ViewData["Title"] = "NewReservation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<form asp-action="NewReservation" method="post">
+    <div class="form-group">
+        <label>Destinasyon</label>
+        <select asp-for="DestinationID" class="form-control" asp-items="ViewBag.Destinations">
+            <option value="">Seçiniz</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Kişi Sayısı</label>
+        <input asp-for="PersonCount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Tarih</label>
+        <input type="date" asp-for="ReservationDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Varsa eklemek istedikleriniz</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Rezervasyon Yap</button>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+           var message = @Html.Raw(Json.Serialize(TempData["ReservationMessage"] ?? ""));
+            if (message && message.trim() !== "") 
+            {
+                Swal.fire({
+                    title: 'Bilgilendirme',
+                    text: message,
+                    icon: 'info',
+                    confirmButtonText: 'Tamam'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '@Url.Action("MyReservations", "Reservation", new { area = "Member" })';
+                    }
+                });
+            }
+        });
+    </script>
+}

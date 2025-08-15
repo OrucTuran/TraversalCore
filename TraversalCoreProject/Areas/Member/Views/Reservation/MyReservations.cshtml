@@ -1,0 +1,68 @@
+﻿@model List<EntityLayer.Concrete.Reservation>
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@{
+    ViewData["Title"] = "MyReservations";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<h3>Aktif Rezervasyonlarım</h3>
+
+@functions {
+    public string GetStatusClass(EntityLayer.Concrete.ReservationStatus status)
+    {
+        return status switch
+        {
+            EntityLayer.Concrete.ReservationStatus.Pending => "text-danger",
+            EntityLayer.Concrete.ReservationStatus.ContactingCustomer => "text-warning",
+            EntityLayer.Concrete.ReservationStatus.Quoted => "text-primary",
+            EntityLayer.Concrete.ReservationStatus.Confirmed => "text-success",
+            EntityLayer.Concrete.ReservationStatus.Cancelled => "text-secondary",
+            _ => "text-dark"
+        };
+    }
+}
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Destinasyon</th>
+            <th>Kişi Sayısı</th>
+            <th>Tarih</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var res in Model)
+        {
+            <tr class="@((res.Status == EntityLayer.Concrete.ReservationStatus.Pending
+                                                       || res.Status == EntityLayer.Concrete.ReservationStatus.ContactingCustomer
+                                                       || res.Status == EntityLayer.Concrete.ReservationStatus.Quoted)
+                                                       ? "" : "table-secondary")">
+            <td>@res.Destination.City</td>
+            <td>@res.PersonCount</td>
+            <td>@res.ReservationDate.ToString("dd.MM.yyyy")</td>
+            <td>
+                @{
+                        var field = res.Status.GetType().GetField(res.Status.ToString());
+                        var display = field.GetCustomAttribute<DisplayAttribute>()?.Name ?? res.Status.ToString();
+
+                        var badgeClass = res.Status switch
+                        {
+                            EntityLayer.Concrete.ReservationStatus.Pending => "badge bg-danger",
+                            EntityLayer.Concrete.ReservationStatus.ContactingCustomer => "badge bg-warning text-dark",
+                            EntityLayer.Concrete.ReservationStatus.Quoted => "badge bg-primary",
+                            EntityLayer.Concrete.ReservationStatus.Confirmed => "badge bg-success",
+                            EntityLayer.Concrete.ReservationStatus.Cancelled => "badge bg-secondary",
+                            _ => "badge bg-light text-dark"
+                        };
+                    }
+                    <span class="@badgeClass">@display</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Member/Reservation/MyOldReservations/" class="btn btn-outline-primary mt-2">Geçmİş Rezervasyonlarım</a>

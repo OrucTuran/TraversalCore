@@ -6,7 +6,7 @@
 <html lang="en">
 
 @await Html.PartialAsync("/Views/MemberLayoutPartial/_HeadPartial.cshtml")
-
+@RenderSection("Scripts", required: false)
 <body class="g-sidenav-show  bg-gray-100">
 
     @await Html.PartialAsync("/Views/MemberLayoutPartial/_NavbarPartial.cshtml")

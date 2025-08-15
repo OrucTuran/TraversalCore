@@ -13,6 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using BusinessLayer.Concrete;
+using BusinessLayer.Abstract;
 
 namespace TraversalCoreProject
 {
@@ -25,7 +30,7 @@ namespace TraversalCoreProject
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // bu method, uygulamanin servislerini yapilandirmak icin kullanilir.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>(); // burada amac identity yapilandirmasini tanimlamak hemde proje seviyesinde bir authentication uygulamak
@@ -50,13 +55,16 @@ namespace TraversalCoreProject
                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
 
-            }); // kullanýcý authorize olmak icin mutlaka giris yapsin
+            }); // kullanici authorize olmak icin mutlaka giris yapsin
 
             services.AddMvc();
             services.AddControllersWithViews();
+
+            services.AddScoped<IReservationDal, EfReservationDal>();
+            services.AddScoped<IReservationService, ReservationManager>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // bu method, HTTP request pipeline'i yapilandirmak icin kullanilir.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -66,7 +74,7 @@ namespace TraversalCoreProject
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // varsayilan olarak HSTS (HTTP Strict Transport Security) kullanilir
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -74,10 +82,10 @@ namespace TraversalCoreProject
 
             app.UseRouting();
 
-            app.UseAuthentication(); // Kimlik doðrulama
+            app.UseAuthentication(); // kimlik dogrulama
             app.UseAuthorization();  // Yetkilendirme
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => //her sinifin kullanabilecegi endpointler tanimlanir
             {
                 // Area route önce gelmeli
                 endpoints.MapControllerRoute(

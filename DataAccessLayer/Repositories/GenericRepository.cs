@@ -54,5 +54,12 @@ namespace DataAccessLayer.Repositories
             context.Update(t);
             context.SaveChanges();
         }
+
+        public IQueryable<T> GetQueryable()
+        {
+            using var context = new Context();
+            return context.Set<T>().AsQueryable();
+        }
+
     }
 }
