@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
     [Area("Member")]
-    public class ReservationController : Controller
+    public class ReservationController : Controller //eğer hiç rezervasyon yoksa geçmişte veya aktifte veya ikisinde. hiç tablo gelmesin. rezervasyon yok falan desin.
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IReservationService _reservationService;
