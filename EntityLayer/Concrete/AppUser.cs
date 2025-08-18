@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class AppUser:IdentityUser<int>
+    public class AppUser : IdentityUser<int>
     {
         public string ImageURL { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Gender { get; set; }
         public string Phone { get; set; }
+        public bool IsSubscribed { get; set; }
         public List<Reservation> Reservations { get; set; }
     }
 }
