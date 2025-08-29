@@ -25,7 +25,7 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         public async Task<IActionResult> MyReservations()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            
+
             // Doğru: Include'lu rezervasyon listesini alacak bir servis metodu kullanılmalı
             var reservations = _reservationService.TGetListWithDestination()
                                     .Where(r => r.AppUserID == user.Id && r.ReservationDate >= DateTime.Now)
@@ -44,6 +44,11 @@ namespace TraversalCoreProject.Areas.Member.Controllers
                 .Where(r => r.AppUserID == user.Id && r.ReservationDate < DateTime.Now)
                 .OrderByDescending(r => r.ReservationDate)
                 .ToList();
+
+            foreach (var item in oldReservations)
+            {
+                item.Status = ReservationStatus.Past;
+            }
 
             return View(oldReservations);
         }
