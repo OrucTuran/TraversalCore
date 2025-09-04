@@ -16,10 +16,10 @@ namespace TraversalCoreProject.ViewComponents.MemberDashboard
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.loginName = values.Name + " " + values.Surname;
-            ViewBag.loginUserPhone = values.PhoneNumber;
-            ViewBag.loginUserEmail = values.Email;
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.loginName = user.Name + " " + user.Surname;
+            ViewBag.loginUserPhone = user.PhoneNumber;
+            ViewBag.loginUserEmail = user.Email;
             return View();
         }
     }
