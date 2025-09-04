@@ -69,6 +69,9 @@ namespace TraversalCoreProject
 
             services.AddScoped<IReservationDal, EfReservationDal>();
             services.AddScoped<IReservationService, ReservationManager>();
+
+            services.AddScoped<ICommentDal, EfCommentDal>();
+            services.AddScoped<ICommentService, CommentManager>();
         }
 
         // bu method, HTTP request pipeline'i yapilandirmak icin kullanilir.
