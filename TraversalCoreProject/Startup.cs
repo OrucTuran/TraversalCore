@@ -48,6 +48,13 @@ namespace TraversalCoreProject
             .AddErrorDescriber<CustomIdentityValidator>() // Türkçe hata mesajlarý
             .AddDefaultTokenProviders();
 
+            // cookie ayarlari (login olmayanlari login sayfasina gondermek icin)
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/SignIn/"; // kullanici giris yapmadiysa buraya gidecek
+                options.AccessDeniedPath = "/Error/AccessDenied"; // yetki yoksa // yetki suan hic yok.. ekleneccek..
+            });
+
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()

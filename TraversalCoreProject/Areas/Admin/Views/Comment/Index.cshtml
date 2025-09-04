@@ -1,0 +1,60 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "Yorum Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="mb-3">Yorum Listesi</h3>
+
+<div class="card shadow-sm rounded-3">
+    <div class="card-body">
+        <table id="commentsTable" class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Kullanıcı</th>
+                    <th>Rota</th>
+                    <th>Tarih</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CommentID</td>
+                        <td>@item.CommentUser</td>
+                        <td>@item.Destination.City</td>
+                        <td>@item.CommentDate.ToString("dd.MM.yyyy")</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-outline-danger">
+                                <i class="bx bx-trash"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('#commentsTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json"
+                },
+                "pageLength": 10,
+                "ordering": true,
+                "lengthChange": false,
+                "info": false
+            });
+        });
+    </script>
+}
