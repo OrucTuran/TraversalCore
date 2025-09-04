@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
+    [AllowAnonymous]
     [Area("Admin")]
     public class DestinationController : Controller
     {
@@ -34,7 +36,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             var values = destinationManager.TGeyByID(id);
             destinationManager.TDelete(values);
 
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -47,6 +49,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         public IActionResult UpdateDestination(Destination destination)
         {
             destinationManager.TUpdate(destination);
+
             return RedirectToAction(nameof(Index));
         }
     }

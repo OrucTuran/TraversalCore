@@ -1,8 +1,62 @@
-﻿
+﻿@model EntityLayer.Concrete.Destination
 @{
     ViewData["Title"] = "UpdateDestination";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>UpdateDestination</h1>
+<h3>Rota Güncelleme Alanı</h3>
 
+<form asp-action="UpdateDestination" method="post">
+    @Html.HiddenFor(x => x.DestinationID)
+    <div class="form-group">
+        <label>Şehir</label>
+        <input class="form-control" asp-for="City" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Fiyat</label>
+        <input class="form-control" asp-for="Price" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Gün - Gece")
+        <input class="form-control" asp-for="DayNight" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Kapasite</label>
+        <input class="form-control" asp-for="Capacity" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Ana Görsel</label>
+        <input class="form-control" asp-for="Image" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Kapak Görseli</label>
+        <input class="form-control" asp-for="BlogCoverImage" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Mini Görsel</label>
+        <input class="form-control" asp-for="BlogMiniImage" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Ana Açıklama</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Mini Açıklama 1</label>
+        <textarea class="form-control" asp-for="BlogDescriptionA"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Mini Açıklama 2</label>
+        <textarea class="form-control" asp-for="BlogDescriptionB"></textarea>
+    </div>
+    <br />
+    <button class="btn btn-outline-primary">Güncelle</button>
+</form>
