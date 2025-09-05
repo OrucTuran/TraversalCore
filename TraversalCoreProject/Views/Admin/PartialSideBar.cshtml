@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Menü Örneği</title>
-  <!-- Boxicons CDN -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <style>
+    <meta charset="UTF-8" />
+    <title>Menü Örneği</title>
+    <!-- Boxicons CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
         .sidebar {
             overflow-y: auto; /* Dikey scroll aktif */
         }
@@ -29,52 +29,78 @@
             scrollbar-width: thin;
             scrollbar-color: #4e73df transparent;
         }
-    /* Renkli ikonlar */
-    .bx-map { color: #17a2b8; }
-    .bx-highlight, .bx-star { color: #ffc107; }
-    .bx-comment-detail { color: #ff851b; }
-    .bx-group { color: #28a745; }
-    .bx-envelope, .bx-mail-send { color: #20c997; }
-    .bx-book-reader, .bx-award, .bx-info-circle { color: #6f42c1; }
-    .bx-lock-alt { color: #dc3545; }
-    .bx-shield-quarter { color: #0dcaf0; }
-    .bx-log-out-circle { color: #e83e8c; }
+        /* Renkli ikonlar */
+        .bx-map {
+            color: #17a2b8;
+        }
 
-  </style>
+        .bx-highlight, .bx-star {
+            color: #ffc107;
+        }
+
+        .bx-comment-detail {
+            color: #ff851b;
+        }
+
+        .bx-group {
+            color: #28a745;
+        }
+
+        .bx-envelope, .bx-mail-send {
+            color: #20c997;
+        }
+
+        .bx-book-reader, .bx-award, .bx-info-circle {
+            color: #6f42c1;
+        }
+
+        .bx-lock-alt {
+            color: #dc3545;
+        }
+
+        .bx-shield-quarter {
+            color: #0dcaf0;
+        }
+
+        .bx-log-out-circle {
+            color: #e83e8c;
+        }
+
+    </style>
 </head>
 <body>
 
-  <div class="sidebar">
-    <ul class="menu-inner py-1">
+    <div class="sidebar">
+        <ul class="menu-inner py-1">
 
-      <!-- GENEL -->
-      <li class="menu-header">Genel</li>
-      <li class="menu-item"><a href="#" class="menu-link active"><i class="menu-icon bx bx-home-circle"></i><div>Dashboard</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-map"></i><div>Rotalar</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-highlight"></i><div>Öne Çıkanlar</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-star"></i><div>Diğer Öne Çıkanlar</div></a></li>
+            <!-- GENEL -->
+            <li class="menu-header">Genel</li>
+            <li class="menu-item"><a href="#" class="menu-link active"><i class="menu-icon bx bx-home-circle"></i><div>Dashboard</div></a></li>
+            <li class="menu-item"><a href="/Admin/Destination/Index" class="menu-link"><i class="menu-icon bx bx-map"></i><div>Rotalar</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-highlight"></i><div>Öne Çıkanlar</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-star"></i><div>Diğer Öne Çıkanlar</div></a></li>
 
-      <!-- İÇERİK -->
-      <li class="menu-header">İçerik</li>
-      <li class="menu-item"><a href="/Admin/Comment/Index/" class="menu-link"><i class="menu-icon bx bx-comment-detail"></i><div>Yorumlar</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-group"></i><div>Misafirler</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-envelope"></i><div>Mesajlar</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-mail-send"></i><div>Mail Listesi</div></a></li>
+            <!-- İÇERİK -->
+            <li class="menu-header">İçerik</li>
+            <li class="menu-item"><a href="/Admin/Comment/Index/" class="menu-link"><i class="menu-icon bx bx-comment-detail"></i><div>Yorumlar</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-group"></i><div>Misafirler</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-envelope"></i><div>Mesajlar</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-mail-send"></i><div>Mail Listesi</div></a></li>
 
-      <!-- KURUMSAL -->
-      <li class="menu-header">Kurumsal</li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-book-reader"></i><div>Rehberlerimiz</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-award"></i><div>Referanslar</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-info-circle"></i><div>Alt Hakkında</div></a></li>
+            <!-- KURUMSAL -->
+            <li class="menu-header">Kurumsal</li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-book-reader"></i><div>Rehberlerimiz</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-award"></i><div>Referanslar</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-info-circle"></i><div>Alt Hakkında</div></a></li>
 
-      <!-- YÖNETİM -->
-      <li class="menu-header">Yönetim</li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-lock-alt"></i><div>Şifre İşlemleri</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-shield-quarter"></i><div>Rol İşlemleri</div></a></li>
-      <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-log-out-circle"></i><div>Çıkış Yap</div></a></li>
+            <!-- YÖNETİM -->
+            <li class="menu-header">Yönetim</li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-lock-alt"></i><div>Şifre İşlemleri</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-shield-quarter"></i><div>Rol İşlemleri</div></a></li>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="menu-icon bx bx-log-out-circle"></i><div>Çıkış Yap</div></a></li>
 
-    </ul>
-  </div>
+        </ul>
+    </div>
 
 </body>
 </html>
