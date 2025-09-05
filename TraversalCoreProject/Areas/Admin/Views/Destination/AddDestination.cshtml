@@ -4,59 +4,52 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Yeni Rota Oluşturma Alanı</h3>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Yeni Tur Rotası Ekle</h3>
+    <a href="/Admin/Destination/Index" class="btn btn-outline-secondary">
+        ← Listeye Dön
+    </a>
+</div>
 
-<form asp-action="AddDestination" method="post">
-    <div class="form-group">
-        <label>Şehir</label>
-        <input class="form-control" asp-for="City" />
+<div class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Şehir</label>
+        <input class="form-control" asp-for="City" placeholder="Örn: Paris" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Fiyat</label>
-        <input class="form-control" asp-for="Price" />
+    <div class="col-md-6">
+        <label class="form-label">Fiyat</label>
+        <input class="form-control" asp-for="Price" placeholder="Örn: 2500" />
     </div>
-    <br />
-    <div class="form-group">
-        @Html.Label("Gün - Gece")
-        <input class="form-control" asp-for="DayNight" />
+    <div class="col-md-6">
+        <label class="form-label">Gün - Gece</label>
+        <input class="form-control" asp-for="DayNight" placeholder="Örn: 5 Gün - 4 Gece" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Kapasite</label>
-        <input class="form-control" asp-for="Capacity" />
+    <div class="col-md-6">
+        <label class="form-label">Kapasite</label>
+        <input class="form-control" asp-for="Capacity" placeholder="Örn: 30" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Ana Görsel</label>
-        <input class="form-control" asp-for="Image" />
+    <div class="col-md-6">
+        <label class="form-label">Ana Görsel</label>
+        <input class="form-control" asp-for="Image" placeholder="Ana görsel URL'si" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Kapak Görseli</label>
-        <input class="form-control" asp-for="BlogCoverImage" />
+    <div class="col-md-6">
+        <label class="form-label">Kapak Görseli</label>
+        <input class="form-control" asp-for="BlogCoverImage" placeholder="Kapak görsel URL'si" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Görsel</label>
-        <input class="form-control" asp-for="BlogMiniImage" />
+    <div class="col-md-6">
+        <label class="form-label">Mini Görsel</label>
+        <input class="form-control" asp-for="BlogMiniImage" placeholder="Mini görsel URL'si" />
     </div>
-    <br />
-    <div class="form-group">
-        <label>Ana Açıklama</label>
-        <textarea class="form-control" asp-for="Description"></textarea>
+    <div class="col-12">
+        <label class="form-label">Ana Açıklama</label>
+        <textarea class="form-control" asp-for="Description" rows="3" placeholder="Tur hakkında detaylı açıklama..."></textarea>
     </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Açıklama 1</label>
-        <textarea class="form-control" asp-for="BlogDescriptionA"></textarea>
+    <div class="col-md-6">
+        <label class="form-label">Mini Açıklama 1</label>
+        <textarea class="form-control" asp-for="BlogDescriptionA" rows="2" placeholder="Kısa açıklama 1..."></textarea>
     </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Açıklama 2</label>
-        <textarea class="form-control" asp-for="BlogDescriptionB"></textarea>
+    <div class="col-md-6">
+        <label class="form-label">Mini Açıklama 2</label>
+        <textarea class="form-control" asp-for="BlogDescriptionB" rows="2" placeholder="Kısa açıklama 2..."></textarea>
     </div>
-    <br />
-    <button type="submit" class="btn btn-outline-primary">Destinasyon Ekle</button>
-</form>
-
+</div>

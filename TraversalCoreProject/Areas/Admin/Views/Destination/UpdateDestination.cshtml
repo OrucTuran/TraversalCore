@@ -4,59 +4,67 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Rota Güncelleme Alanı</h3>
+<div class="container mt-4">
+    <h3 class="mb-4">✏️ Rota Güncelleme Alanı</h3>
 
-<form asp-action="UpdateDestination" method="post">
-    @Html.HiddenFor(x => x.DestinationID)
-    <div class="form-group">
-        <label>Şehir</label>
-        <input class="form-control" asp-for="City" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Fiyat</label>
-        <input class="form-control" asp-for="Price" />
-    </div>
-    <br />
-    <div class="form-group">
-        @Html.Label("Gün - Gece")
-        <input class="form-control" asp-for="DayNight" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Kapasite</label>
-        <input class="form-control" asp-for="Capacity" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Ana Görsel</label>
-        <input class="form-control" asp-for="Image" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Kapak Görseli</label>
-        <input class="form-control" asp-for="BlogCoverImage" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Görsel</label>
-        <input class="form-control" asp-for="BlogMiniImage" />
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Ana Açıklama</label>
-        <textarea class="form-control" asp-for="Description"></textarea>
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Açıklama 1</label>
-        <textarea class="form-control" asp-for="BlogDescriptionA"></textarea>
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Mini Açıklama 2</label>
-        <textarea class="form-control" asp-for="BlogDescriptionB"></textarea>
-    </div>
-    <br />
-    <button class="btn btn-outline-primary">Güncelle</button>
-</form>
+    <form asp-action="UpdateDestination" method="post">
+        @Html.HiddenFor(x => x.DestinationID)
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Şehir</label>
+                <input class="form-control" asp-for="City" placeholder="Örn: Paris" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Fiyat</label>
+                <input class="form-control" asp-for="Price" placeholder="Örn: 2500" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Gün - Gece</label>
+                <input class="form-control" asp-for="DayNight" placeholder="Örn: 5 Gün - 4 Gece" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Kapasite</label>
+                <input class="form-control" asp-for="Capacity" placeholder="Örn: 30" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Ana Görsel</label>
+                <input class="form-control" asp-for="Image" placeholder="Ana görsel URL'si" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Kapak Görseli</label>
+                <input class="form-control" asp-for="BlogCoverImage" placeholder="Kapak görsel URL'si" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Mini Görsel</label>
+                <input class="form-control" asp-for="BlogMiniImage" placeholder="Mini görsel URL'si" />
+            </div>
+
+            <div class="col-12">
+                <label class="form-label">Ana Açıklama</label>
+                <textarea class="form-control" asp-for="Description" rows="3" placeholder="Tur hakkında detaylı açıklama..."></textarea>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Mini Açıklama 1</label>
+                <textarea class="form-control" asp-for="BlogDescriptionA" rows="2" placeholder="Kısa açıklama 1..."></textarea>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Mini Açıklama 2</label>
+                <textarea class="form-control" asp-for="BlogDescriptionB" rows="2" placeholder="Kısa açıklama 2..."></textarea>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button class="btn btn-primary px-4">💾 Güncelle</button>
+            <a href="/Admin/Destination/Index" class="btn btn-secondary px-4">⬅️ Geri Dön</a>
+        </div>
+    </form>
+</div>
