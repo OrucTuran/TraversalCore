@@ -18,6 +18,7 @@ using DataAccessLayer.EntityFramework;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using BusinessLayer.Concrete;
 using BusinessLayer.Abstract;
+using BusinessLayer.Container;
 
 namespace TraversalCoreProject
 {
@@ -67,14 +68,7 @@ namespace TraversalCoreProject
             services.AddMvc();
             services.AddControllersWithViews();
 
-            services.AddScoped<IReservationDal, EfReservationDal>();
-            services.AddScoped<IReservationService, ReservationManager>();
-
-            services.AddScoped<ICommentDal, EfCommentDal>();
-            services.AddScoped<ICommentService, CommentManager>();
-
-            services.AddScoped<IDestinationDal, EfDestinationDal>();
-            services.AddScoped<IDestinationService, DestinationManager>();
+            services.AddBusinessLayerDependencies();
         }
 
         // bu method, HTTP request pipeline'i yapilandirmak icin kullanilir.
