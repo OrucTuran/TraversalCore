@@ -1,0 +1,48 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h3>Kullanıcının Geçmiş Rezervasyonları</h3>
+
+@functions {
+    public string GetStatusClass(EntityLayer.Concrete.ReservationStatus status)
+    {
+        return status switch
+        {
+            EntityLayer.Concrete.ReservationStatus.Past => "text-warning",
+            _ => "text-dark"
+        };
+    }
+}
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Misafir Adı Soyadı</th>
+            <th>Destinasyon</th>
+            <th>Kişi Sayısı</th>
+            <th>Tarih</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var res in Model)
+        {
+            <tr>
+                @{
+                    count = count + 1;
+                }
+                <td>@count</td>
+                <td>@res.AppUser.Name @res.AppUser.Surname</td>
+                <td>@res.Destination.City</td>
+                <td>@res.PersonCount</td>
+                <td>@res.ReservationDate.ToString("dd.MM.yyyy")</td>
+                <td><a href="#" class="btn btn-primary">Detaylar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
