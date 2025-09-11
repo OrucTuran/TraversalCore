@@ -19,23 +19,28 @@
                 <input type="hidden" asp-for="GuideID" />
                 <div class="col-md-6">
                     <label class="form-label">Ad Soyad</label>
-                    <input class="form-control" asp-for="Name" placeholder="Örn: Ahmet Yılmaz" />
+                    <input asp-for="Name" class="form-control @(ViewData.ModelState["Name"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Örn: Ahmet Yılmaz" />
+                    <span asp-validation-for="Name" class="invalid-feedback"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="Description" class="form-label">Açıklama</label>
-                    <textarea asp-for="Description" class="form-control" rows="1" placeholder="Rehber hakkında açıklama giriniz."></textarea>
+                    <textarea asp-for="Description" class="form-control @(ViewData.ModelState["Description"]?.Errors.Count > 0 ? "is-invalid" : "")" rows="1" placeholder="Rehber hakkında açıklama giriniz."></textarea>
+                    <span asp-validation-for="Description" class="invalid-feedback"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="Image" class="form-label">Fotoğraf URL</label>
-                    <input asp-for="Image" class="form-control" placeholder="https://...jpg" />
+                    <input asp-for="Image" class="form-control @(ViewData.ModelState["Image"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="https://...jpg" />
+                    <span asp-validation-for="Image" class="invalid-feedback"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="SocialMediaA" class="form-label">Sosyal Medya 1 (Facebook)</label>
-                    <input asp-for="SocialMediaA" class="form-control" placeholder="https://facebook.com/kullanici" />
+                    <input asp-for="SocialMediaA" class="form-control @(ViewData.ModelState["SocialMediaA"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="https://facebook.com/kullanici" />
+                    <span asp-validation-for="SocialMediaA" class="invalid-feedback"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="SocialMediaB" class="form-label">Sosyal Medya 2 (Instagram)</label>
-                    <input asp-for="SocialMediaB" class="form-control" placeholder="https://instagram.com/kullanici" />
+                    <input asp-for="SocialMediaB" class="form-control @(ViewData.ModelState["SocialMediaB"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="https://instagram.com/kullanici" />
+                    <span asp-validation-for="SocialMediaB" class="invalid-feedback"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="Status" class="form-label d-block">Durum</label>
@@ -55,3 +60,9 @@
         </form>
     </div>
 </div>
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
