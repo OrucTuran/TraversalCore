@@ -1,14 +1,18 @@
 ﻿using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
+using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TraversalCoreProject.Models;
 
+//pdf icin
+using iTextSharp.text;
+
 namespace TraversalCoreProject.Controllers
 {
-    public class ExcelController : Controller
+    public class FileReportController : Controller
     {
         public IActionResult Index()
         {
@@ -87,6 +91,61 @@ namespace TraversalCoreProject.Controllers
                     var content = stream.ToArray();
                     return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Destinations.xlsx");
                 }
+            }
+        }
+
+        public IActionResult StaticPDFReport()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Document document = new Document(PageSize.A4);
+                PdfWriter.GetInstance(document, stream);
+
+                document.Open();
+                Paragraph elements = new Paragraph("Traversal Rezervasyon PDF Raporu");
+                document.Add(elements);
+                document.Close();
+
+                var bytes = stream.ToArray();
+                return File(bytes, "application/pdf", "StaticPDFReport.pdf");
+            }
+        }
+
+        public IActionResult DestinationPDFReport()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Document document = new Document(PageSize.A4);
+                PdfWriter.GetInstance(document, stream);
+
+                document.Open();
+                Paragraph title = new Paragraph("Traversal Dinamik PDF Tur Raporu\n\n");
+                document.Add(title);
+
+                // Tablo
+                PdfPTable table = new PdfPTable(4);
+                table.AddCell("Şehir");
+                table.AddCell("Konaklama Süresi");
+                table.AddCell("Fiyat");
+                table.AddCell("Kapasite");
+
+                using (var c = new Context())
+                {
+                    var destinations = c.Destinations.ToList();
+                    foreach (var item in destinations)
+                    {
+                        table.AddCell(item.City);
+                        table.AddCell(item.DayNight);
+                        table.AddCell(item.Price.ToString());
+                        table.AddCell(item.Capacity.ToString());
+                    }
+                }
+
+                document.Add(table);
+                document.Close();
+
+                var bytes = stream.ToArray();
+                return File(bytes, "application/pdf", "DestinationPDFReport.pdf");
             }
         }
     }
